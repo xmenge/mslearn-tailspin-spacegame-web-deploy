@@ -69,7 +69,7 @@ stages:
 - stage: 'Deploy'
   displayName: 'Deploy the web app'
   dependsOn: build
-  Jobs:
+  jobs:
   - deployment: deploy
     pool: 
       vmImage: 'ubuntu-16.04'
