@@ -73,7 +73,7 @@ stages:
   condition: | 
     and 
     (
-      succeed(),
+      succeeded(),
       eq(variables['Build.SourceBranchName'], variables['releaseBranchName']
     )
   jobs:
