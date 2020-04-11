@@ -7,11 +7,11 @@ variables:
 
 schedules:
 - cron: '0  3 * * *'
-displayName: 'Deploy at 3:00AM daily'
-branches:
-  include:
-    - release
-  always: false
+  displayName: 'Deploy at 3:00AM daily'
+  branches:
+    include:
+      - release
+    always: false
 
 stages:
 - stage: 'Build'
