@@ -75,7 +75,7 @@ stages:
       artifact: drop
 
 - stage: 'Dev'
-  displayName: 'Deploy the web app - Dev'
+  displayName: 'Deploy to Dev env'
   dependsOn: Build
   condition: | 
     and 
@@ -105,7 +105,7 @@ stages:
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
 
 - stage: 'Test'
-  displayName: 'Deploy the web app - Test'
+  displayName: 'Deploy to Test env'
   dependsOn: Dev
   # condition: eq(variables['Build.Reason'], 'Schedule')
   jobs:
@@ -130,7 +130,7 @@ stages:
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
 
 - stage: 'Staging'
-  displayName: 'Deploy the web app - Staging'
+  displayName: 'Deploy to Staging env'
   dependsOn: Test
   jobs:
   - deployment: Deploy
