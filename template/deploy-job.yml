@@ -1,10 +1,9 @@
 parameters:
 # listing different ways to define parameters with / without default values
-- name: displayName
-  default: ''
+- displayName: ''
 - name: env
   default: ''
-- appName: ''
+- name: appName
   type: string
   default: ''
 
