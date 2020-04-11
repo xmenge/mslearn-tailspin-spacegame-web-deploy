@@ -1,13 +1,11 @@
 parameters:
+# listing different ways to define parameters with / without default values
 - name: displayName
   type: string
   default: ''
 - name: env
-  type: string
   default: ''
-- name: appName 
-  type: string
-  default: ''
+- appName: ''
   
 jobs:
 - deployment: Deploy
