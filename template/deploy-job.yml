@@ -1,12 +1,12 @@
 parameters:
 # listing different ways to define parameters with / without default values
-- name: displayName
-  type: string
-  default: ''
+- displayName: ''
 - name: env
   default: ''
 - appName: ''
-  
+  type: string
+  default: ''
+
 jobs:
 - deployment: Deploy
   displayName: '${{ parameters.displayName }}'
