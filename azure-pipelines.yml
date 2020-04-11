@@ -85,6 +85,7 @@ stages:
     )
   jobs:
   - deployment: Deploy
+    displayName: 'Deploy to Dev'
     pool:
       vmImage: 'ubuntu-16.04'
     environment: dev
@@ -109,9 +110,10 @@ stages:
   # condition: eq(variables['Build.Reason'], 'Schedule')
   jobs:
   - deployment: Deploy
+    displayName: 'Deploy to Test'
     pool:
       vmImage: 'ubuntu-16.04'
-    environment: dev
+    environment: test
     variables:
     - group: Release
     strategy:
@@ -126,4 +128,29 @@ stages:
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
               appName: '$(WebAppNameTest)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+
+# - stage: 'Staging'
+#   displayName: 'Deploy the web app - Staging'
+#   dependsOn: Test
+#   # condition: eq(variables['Build.Reason'], 'Schedule')
+#   jobs:
+#   - deployment: Deploy
+#     displayName: 'Deploy to Staging'
+#     pool:
+#       vmImage: 'ubuntu-16.04'
+#     environment: staging
+#     variables:
+#     - group: Release
+#     strategy:
+#       runOnce:
+#         deploy:
+#           steps:
+#           - download: current
+#             artifact: drop
+#           - task: AzureWebApp@1
+#             displayName: 'Azure App Service Deploy: website'
+#             inputs:
+#               azureSubscription: 'Resource Manager - Tailspin - Space Game'
+#               appName: '$(WebAppNameStaging)'
+#               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
 
