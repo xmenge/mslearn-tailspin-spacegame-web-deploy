@@ -1,6 +1,7 @@
 parameters:
 # listing different ways to define parameters with / without default values
-- jobDesc: ''
+- name: jobDesc
+  default: ''
 - name: env
   default: ''
 - name: appName
