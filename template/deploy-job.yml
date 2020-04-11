@@ -1,6 +1,6 @@
 parameters:
 # listing different ways to define parameters with / without default values
-- name: jobDesc
+- name: displayName
   default: ''
 - name: env
   default: ''
@@ -10,7 +10,7 @@ parameters:
 
 jobs:
 - deployment: Deploy
-  displayName: '${{ parameters.jobDesc }}'
+  displayName: '${{ parameters.displayName }}'
   pool:
     vmImage: 'ubuntu-16.04'
   environment: ${{ parameters.env }}
