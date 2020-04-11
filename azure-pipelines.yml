@@ -15,7 +15,7 @@ schedules:
 
 stages:
 - stage: 'Build'
-  displayName: 'Build the web app'
+  displayName: 'Build web app'
   jobs: 
   - job: 'Build'
     displayName: 'Build app'
@@ -84,25 +84,11 @@ stages:
       eq(variables['Build.SourceBranchName'], variables['releaseBranchName'])
     )
   jobs:
-  - deployment: Deploy
-    displayName: 'Deploy to Dev'
-    pool:
-      vmImage: 'ubuntu-16.04'
-    environment: dev
-    variables:
-    - group: 'Release'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: current
-            artifact: drop
-          - task: AzureWebApp@1
-            displayName: 'Azure App Service Deploy: website'
-            inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
-              appName: '$(WebAppNameDev)'
-              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+  - template: template/deploy-job.yml
+    parameters:
+      displayName: 'Deploy to Dev env'
+      env: dev
+      appName: '$(WebAppNameDev)'
 
 - stage: 'Test'
   displayName: 'Deploy to Test env'
