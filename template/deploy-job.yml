@@ -11,10 +11,10 @@ parameters:
   
 jobs:
 - deployment: Deploy
-  displayName: '${{ displayName }}'
+  displayName: '${{ parameters.displayName }}'
   pool:
     vmImage: 'ubuntu-16.04'
-  environment: ${{ env }}
+  environment: ${{ parameters.env }}
   variables:
   - group: 'Release'
   strategy:
@@ -27,5 +27,5 @@ jobs:
           displayName: 'Azure App Service Deploy: website'
           inputs:
             azureSubscription: 'Resource Manager - Tailspin - Space Game'
-            appName: '${{ WebAppNameDev }}'
+            appName: '${{ parameters.appName }}'
             package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
