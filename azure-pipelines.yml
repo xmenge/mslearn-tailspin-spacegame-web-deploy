@@ -87,17 +87,17 @@ stages:
           Tailspin.SpaceGame.Database/bin/**/*.dacpac
         targetFolder: '$(Build.StagingDirectory)'
 
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact'
-      inputs:
-        pathToPublish: '$(Build.ArtifactStagingDirectory)'
-        artifactName: dropDacpac
-      condition: succeededOrFailed()
+    # - task: PublishBuildArtifacts@1
+    #   displayName: 'Publish Artifact'
+    #   inputs:
+    #     pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    #     artifactName: dropDacpac
+    #   condition: succeededOrFailed()
 
     # test with different way to publish artifact 
-    # - publish: '$(Build.ArtifactStagingDirectory)'
-    #   artifact: dropDacpac
-    #   condition: succeededOrFailed()
+    - publish: '$(Build.ArtifactStagingDirectory)'
+      artifact: dropDacpac
+      condition: succeededOrFailed()
 
 - stage: DBAVerificationScript
   displayName: 'Script database schema changes'
