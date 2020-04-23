@@ -124,7 +124,7 @@ stages:
               serverName: '$(servername).database.windows.net'
               databaseName: '$(databasename)'
               sqlUsername: '$(adminlogin)'
-              sqlPassword: '$(adminPassword)'
+              sqlPassword: '$(adminpassword)'
               deployType: 'DacpacTask'
               deploymentAction: 'Script'
               dacpacFile: '$(Pipeline.Workspace)/dropDacpac/Tailspin.SpaceGame.Database/bin/Debug/Tailspin.SpaceGame.Database.dacpac'
