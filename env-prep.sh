@@ -2,9 +2,9 @@
 
 # set variables
 SUFFIX=3000
-DEV_NAME=tailspin-space-game-web-dev-$SUFFIX
-TEST_NAME=tailspin-space-game-web-test-$SUFFIX
-STAGING_NAME=tailspin-space-game-web-staging-$SUFFIX
+DEV_NAME="tailspin-space-game-web-dev-${SUFFIX}"
+TEST_NAME="tailspin-space-game-web-test-${SUFFIX}"
+STAGING_NAME="tailspin-space-game-web-staging-${SUFFIX}"
 RG=tailspin-space-game-rg
 
 # set default location 
